@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Detail Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b9b9b;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            min-width: 1000px;
+        }
+        .timnas-detail {
+            min-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .timnas-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .timnas-nama {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .timnas-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="timnas-detail">
+        <a href="/timnas/daftar_pemain"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD7NXZEn3fBrdWBKhseTHb2cznzjAQ1R8akfaF1FUf1Q&s" alt="" width="80px"></a>
+        <br>
+        <img src="<%= timnas.foto %>" class="timnas-image" alt="<%= timnas.nama %>">
+        <h2 class="timnas-nama"><%= timnas.nama %></h2>
+        <p class="timnas-text">Nomor Punggung: <%= timnas.no %></p>
+        <p class="timnas-text">Posisi: <%= timnas.posisi %></p>
+        <p class="timnas-text">Klub: <%= timnas.klub %></p>
+        <p class="timnas-text">Tanggal Naturalisasi: <%= timnas.tanggal_naturalisasi %></p>
+    </div>  
+</body>
+</html>

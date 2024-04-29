@@ -1,0 +1,73 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+        data-toggle="modal"
+        data-target="#add-modal"
+      >
+        Add
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive" >
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>No Punggung</th>
+              <th>Posisi</th>
+              <th>Foto</th>
+              <th>Klub</th>
+              <th>Tanggal Naturalisasi</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < timnas.length; i++){ %>
+            <tr>
+              <td><%= i +1 %></td>
+              <td><%= timnas[i].nama %></td>
+              <td><%= timnas[i].no %></td>
+              <td><%= timnas[i].posisi %></td>
+              <td><a href="<%= timnas[i].foto %>">"lihat Gambar...</a></td>
+              <td><%= timnas[i].klub %></td>
+              <td><%= timnas[i].tanggal_naturalisasi %></td>
+              <td class="text-center">
+                <form action="/timnas/<%= timnas[i]._id %>?_method=DELETE" method="POST">
+                  <a
+                href="javascript:void()"
+                class="btn btn-outline-warning btn-sm button-update"
+                data-id="<%= timnas[i].id %>"
+                data-nama="<%= timnas[i].nama %>"
+                data-no="<%= timnas[i].no %>"
+                data-posisi="<%= timnas[i].posisi %>"
+                data-tanggal_naturalisasi="<%= timnas[i].tanggal_naturalisasi %>"
+                data-foto="<%= timnas[i].foto %>"
+                data-klub="<%= timnas[i].klub %>"
+                >Edit</a>
+                <button 
+                    type="submit" 
+                    class="btn btn-outline-danger btn-sm" 
+                    onclick="return confirm('Apa kamu yakin ingin menghapus produk ini?');">
+                  Delete
+                </button>
+                <!-- <button onclick="window.location.href='/timnas/daftar_pemain';">View</button> -->
+                <a href="/timnas/detail_pemain/<%= timnas[i]._id %>" class="btn btn-outline-primary btn-sm button-update">View</a>
+              </form>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: #9b9b9b;">
+    <div class="container mt-5">
+      <!-- <a href="/timnas"><img src="https://i2.wp.com/matuloo.com/wp-content/uploads/2017/02/backbutton.png?fit=800%2C400" alt="" width="80px"></a> -->
+
+      <h2 class="text-center" style="stroke: aliceblue;">Kelola Anggota Timnas U-21</h2>
+      <div class="row mt-3">
+        <!-- Alert -->
+        <div class="col-auto col-lg-12 mt-2">
+          <% if(alert.message != "") { %>
+          <div class="alert alert-<%= alert.status %>" role="alert">
+            <%= alert.message %>
+          </div>
+          <% } %>
+        </div>
+        <!-- Table -->
+        <div class="col-auto col-lg-12 mt-2"><%- include('crud.ejs') %></div>
+      </div>
+    </div>
+    <!-- Add Modal -->
+    <%- include('add_modal.ejs') %>
+    <!-- edit modal -->
+    <%- include('edit_modal.ejs') %>
+    <!-- JS -->
+    <%- include('js.ejs') %>
+
+
+
+
+    <script>
+      /* Menampilkan modal dan memanggil tag table yang memiliki id dataTable
+         class button-update di class tag a Edit di file table.ejs */
+      $("#dataTable").on("click", ".button-update", function () {
+        // membuat variabel untuk mengambil data-id, data-name, dstnya yang sudah dibuat di file table.ejs di bagian tag a edit
+        let id = $(this).data("id");
+        let nama = $(this).data("nama");
+        let no = $(this).data("no");
+        let posisi = $(this).data("posisi");
+        let foto = $(this).data("foto");
+        let klub = $(this).data("klub");
+        let tanggal_naturalisasi = $(this).data("tanggal_naturalisasi");
+        /*
+         * memanggil id edit-modal yang ada di file edit_modal.ejs
+         * dan membuat fungsi dari method
+         */
+        $("#edit-modal").modal("show");
+        /* Lalu Mengirim  id, name, dstnya melalu class disamping form-control tag input
+           dan valuenya mengambil dari setiap let yang dideklarasikan di atas */
+        $(".id").val(id);
+        $(".nama").val(nama);
+        $(".no").val(no);
+        $(".posisi").val(posisi);
+        $(".foto").val(foto);
+        $(".klub").val(klub);
+        $(".tanggal_naturalisasi").val(tanggal_naturalisasi);
+      });
+    </script>
+  </body>
+</html>
